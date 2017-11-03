@@ -4,7 +4,7 @@ namespace MWI\LaravelKit;
 
 class ScriptHandler
 {
-    protected $directories = [
+    static $directories = [
         'app/Traits',
         'app/Services',
         'app/Requests',
@@ -13,7 +13,7 @@ class ScriptHandler
 
     public static function postInstall()
     {
-        foreach ($this->directories as $directory) {
+        foreach (self::$directories as $directory) {
             mkdir($directory, 0777, true);
         }
     }

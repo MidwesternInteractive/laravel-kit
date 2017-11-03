@@ -3,7 +3,7 @@
     "description": "MWI Starter Kit for Laravel Projects",
     "keywords": ["starter", "laravel"],
     "license": "MIT",
-    "type": "library",
+    "type": "project",
     "require": {
         "laravelcollective/html": "^5.5",
         "doctrine/dbal": "^2.6",
