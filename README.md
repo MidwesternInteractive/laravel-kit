@@ -6,6 +6,8 @@ If you haven't already, make sure you have your local environment setup.
 # Set Up
 __*Note*__ `$` represents a terminal command and should not be typed out.
 
+I will be using vim as the editor. You may use your editor of choice.
+
 All commands (unless otherwise specified) should be ran from home dir:
 ```shell
 $ cd
@@ -31,6 +33,23 @@ $ cd project-name
 $ composer require mwi/laravel-kit
 ```
 
+## Update .gitignore
+I would reccomend adding the public resources to the .gitignore file.
+```shell
+$ vim .gitignore
+```
+add `/public/css` and `/public/js` to the bottom of the file an save.
+
+## Create MySQL DB
+```shell
+$ sh vendor/mwi/laravel-kit/database.sh
+```
+
+## Set up laravel .env
+You can do this with the editor or your choice. I will use vim in this example.
+```shell
+$ vim .env 
+```
 
 ## JavaScript Packages
 These packages are on an as need basis. If a theme was incorporated they may not be necessary.
