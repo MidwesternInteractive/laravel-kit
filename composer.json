@@ -13,12 +13,14 @@
         "squizlabs/php_codesniffer": "^3.0"
     },
     "scripts": {
-        "mwi-create-app-directories": [
-            "mkdir 'app/Traits' 'app/Services' 'app/Requests' 'app/Facades'"
-        ],
         "post-install-cmd": [
-            "@mwi-create-app-directories"
+            "MWI\\LaravelKit\\ScriptHandler::postInstall"
         ]
+    },
+    "autoload": {
+        "psr-4": {
+            "MWI\\LaravelKit\\": ""
+        }
     },
     "config": {
         "preferred-install": "dist",
