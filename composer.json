@@ -1,0 +1,28 @@
+{
+    "name": "mwi/laravel-kit",
+    "description": "MWI Starter Kit for Laravel Projects",
+    "keywords": ["starter", "laravel"],
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "laravelcollective/html": "^5.5",
+        "doctrine/dbal": "^2.6",
+        "bugsnag/bugsnag-laravel": "^2.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.0"
+    },
+    "scripts": {
+        "mwi-create-app-directories": [
+            "mkdir 'app/Traits' 'app/Services' 'app/Requests' 'app/Facades'"
+        ],
+        "post-install-cmd": [
+            "@mwi-create-app-directories"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
