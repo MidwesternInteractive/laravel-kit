@@ -31,11 +31,6 @@ $ cd project-name
 $ composer require mwi/laravel-kit
 ```
 
-## Update .gitignore
-I would reccomend adding the public resources to the .gitignore file.
-
-Add `/public/css` and `/public/js` to the bottom of the file and save.
-
 ## Create MySQL DB
 ```shell
 $ sh vendor/mwi/laravel-kit/database.sh
@@ -53,16 +48,13 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-## Basic Authentication Setup
-This is will set up the basic authentication structure of laravel
+## Run MWI Install
+This is will set up the basic structure for a MWI Laravel project.
 ```shell
-$ php artisan make:auth
+$ php artisan mwi:install
 ```
 
-## Run Migrations
-```shell
-$ php artisan migrate
-```
+---
 
 # Package Specific Setup
 This next sections walk you through setting up various included packages.
@@ -100,10 +92,10 @@ class User extends Authenticatable
 }
 ```
 
+---
+
 # JavaScript Packages
 These packages are on an as need basis. If a theme was incorporated they may not be necessary.
-
----
 
 *For masking inputs*
 ```shell
