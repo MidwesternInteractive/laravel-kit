@@ -3,12 +3,9 @@
 namespace MWI\LaravelKit;
 
 use Illuminate\Support\ServiceProvider;
-use MWI\LaravelKit\Install;
 
 class InstallServiceProvider extends ServiceProvider
 {
-    protected $defer = true;
-
     public function boot()
     {
         $this->publishes([
