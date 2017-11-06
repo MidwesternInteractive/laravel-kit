@@ -6,8 +6,6 @@ If you haven't already, make sure you have your local environment setup.
 # Set Up
 __*Note*__ `$` represents a terminal command and should not be typed out.
 
-I will be using vim as the editor. You may use your editor of choice.
-
 All commands (unless otherwise specified) should be ran from home dir:
 ```shell
 $ cd
@@ -35,10 +33,8 @@ $ composer require mwi/laravel-kit
 
 ## Update .gitignore
 I would reccomend adding the public resources to the .gitignore file.
-```shell
-$ vim .gitignore
-```
-add `/public/css` and `/public/js` to the bottom of the file an save.
+
+Add `/public/css` and `/public/js` to the bottom of the file and save.
 
 ## Create MySQL DB
 ```shell
@@ -46,12 +42,65 @@ $ sh vendor/mwi/laravel-kit/database.sh
 ```
 
 ## Set up laravel .env
-You can do this with the editor or your choice. I will use vim in this example.
-```shell
-$ vim .env 
+Modify the following attributes in the .env file
+
+```
+APP_NAME="Project name"
+APP_URL=http://project-name.dev
+
+DB_DATABASE=databasename
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
-## JavaScript Packages
+## Basic Authentication Setup
+This is will set up the basic authentication structure of laravel
+```shell
+$ php artisan make:auth
+```
+
+## Run Migrations
+```shell
+$ php artisan migrate
+```
+
+# Package Specific Setup
+This next sections walk you through setting up various included packages.
+
+## spatie/laravel-permission
+[Spatie Permissions Documentation](https://github.com/spatie/laravel-permission)
+
+```shell
+$ php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="migrations"
+$ php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="config"
+```
+
+### Modify Permissions Config
+Open `config/permission.php` and modify the table names to match your model.
+
+Most common will be user: `user_has_permissions` and `user_has_roles`.
+
+### Migrate
+```shell
+$ php artisan migrate
+```
+
+### Modify the Model to use Permissions on
+Open `App\User` or whatever model it permission swill be used on and add `use HasRoles;` to the class:
+```php
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
+
+class User extends Authenticatable
+{
+    use Notifiable, HasRoles;
+
+    // ...
+}
+```
+
+# JavaScript Packages
 These packages are on an as need basis. If a theme was incorporated they may not be necessary.
 
 ---
