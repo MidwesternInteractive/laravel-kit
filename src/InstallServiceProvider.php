@@ -4,13 +4,19 @@ namespace MWI\LaravelKit;
 
 use Illuminate\Support\ServiceProvider;
 
-class InstallServiceProvider extends ServiceProvider
+class MWIServiceProvider extends ServiceProvider
 {
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/app/' => base_path('app'),
+            __DIR__.'/app/' => app_path(),
         ], 'app');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Commands\Install::class,
+            ]);
+        }
     }
 
     public function register()

@@ -18,18 +18,7 @@ class Install extends Command
      *
      * @var string
      */
-    protected $description = 'Generates the audit report for all stores.';
-
-    /**
-     * List of direcotries to create
-     * @var array
-     */
-    static $directories = [
-        'app/Traits',
-        'app/Services',
-        'app/Http/Requests',
-        'app/Facades'
-    ];
+    protected $description = 'Command to install MWI requirements.';
 
     /**
      * Method to run on command
@@ -37,8 +26,6 @@ class Install extends Command
      */
     public function handle()
     {
-        foreach (self::$directories as $directory) {
-            mkdir($directory, 0777, true);
-        }
+        $this->comment('Command Loaded');
     }
 }
