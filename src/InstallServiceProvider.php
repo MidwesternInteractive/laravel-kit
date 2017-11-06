@@ -10,7 +10,7 @@ class InstallServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/app/' => app_path(),
-        ]);
+        ], 'app');
     }
 
     public function register()
