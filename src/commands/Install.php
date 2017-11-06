@@ -12,21 +12,19 @@ class Install extends Command
 {
     /**
      * The name and signature of the console command.
-     *
      * @var string
      */
     protected $signature = 'mwi:install';
 
     /**
      * The console command description.
-     *
      * @var string
      */
     protected $description = 'Command to install MWI requirements.';
 
     /**
      * Method to run on command
-     * @return [type] [description]
+     * @return void
      */
     public function handle()
     {
@@ -44,6 +42,10 @@ class Install extends Command
         $this->comment('MWI Laravel Kit Installed.');
     }
 
+    /**
+     * Run Artisan Commands
+     * @return void
+     */
     public function runArtisanCalls()
     {
         // Create Auth structure

@@ -39,6 +39,11 @@ $ sh vendor/mwi/laravel-kit/database.sh
 ## Set up laravel .env
 Modify the following attributes in the .env file
 
+__*Note*__ if the .env file does not exist yet (just the .env.example exists) then the following command first. Otherwise skip this step
+```shell
+$ php artisan key:generate
+```
+
 ```
 APP_NAME="Project name"
 APP_URL=http://project-name.dev
