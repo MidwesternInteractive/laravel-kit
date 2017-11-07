@@ -17,32 +17,26 @@ class UsersTableSeeder extends Seeder
         // Reset cached roles and permissions
         app()['cache']->forget('spatie.permission.cache');
 
-        // Seed Developer Account
-        $role = Role::firstOrCreate(['name' => 'developer']);
+        // Create Developer
+        $role = Role::create(['name' => 'developer']);
 
-        $developer = User::firstOrNew([
-            'email'     => 'support@buildmidwestern.com',
-            'name'      => 'MWI'
-        ]);
-        $developer->password = Hash::make('123mwi');
-        $developer->remember_token = str_random(10);
-        $developer->save();
+        $developer = User::create([
+            'email'             => 'support@buildmidwestern.com',
+            'name'              => 'MWI',
+            'password'          => Hash::make('123mwi'),
+            'remember_token'    => str_random(10)
+        ])->syncRoles([$role->name]);
 
-        $developer->syncRoles(['developer']);
+        // Create Administrator
+        $role = Role::create(['name' => 'administrator']);
 
-        // Seed Administrator Account
-        $role = Role::firstOrCreate(['name' => 'administrator']);
+        $administrator = User::create([
+            'email'             => env('APP_EMAIL', 'support@midwesterninteractive.com'),
+            'name'              => 'Administrator',
+            'password'          => Hash::make('secret'),
+            'remember_token'    => str_random(10)
+        ])->syncRoles([$role->name]);
 
-        $administrator = User::firstOrNew([
-            'email'     => env('APP_EMAIL', 'support@midwesterninteractive.com'),
-            'name'      => 'Administrator'
-        ]);
-        $administrator->password = Hash::make('secret');
-        $administrator->remember_token = str_random(10);
-        $administrator->save();
-
-        $administrator->syncRoles(['administrator']);
-        
         // Create additional seed data if not in live environment
         if (!App::environment('production')) {
             factory(User::class, 48)->create();
