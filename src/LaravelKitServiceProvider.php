@@ -8,7 +8,7 @@ class LaravelKitServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->publish();
+        $this->publishFiles();
 
         if ($this->app->runningInConsole()) {
             $this->commands([
@@ -32,7 +32,7 @@ class LaravelKitServiceProvider extends ServiceProvider
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    public function publish(Request $request)
+    public function publishFiles(Request $request)
     {
         $this->publishes([
             __DIR__.'/app/' => app_path(),
