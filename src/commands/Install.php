@@ -2,11 +2,7 @@
 
 namespace MWI\LaravelKit\Commands;
 
-use App\User;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 class Install extends Command
 {
@@ -32,13 +28,6 @@ class Install extends Command
 
         $this->runArtisanCalls();
 
-        // Create Super User
-        $user = User::create([
-            'name'      => 'mwi',
-            'email'     => 'support@buildmidwestern.com',
-            'password'  => Hash::make('123mwi'),
-        ]);
-
         $this->comment('MWI Laravel Kit Installed.');
     }
 
@@ -48,14 +37,15 @@ class Install extends Command
      */
     public function runArtisanCalls()
     {
-        // Create Auth structure
+        // Create Auth Structure
         $this->call('make:auth');
 
         // Publish Service Providers
         $this->call('vendor:publish', ['--provider' => 'MWI\LaravelKit\LaravelKitServiceProvider']);
         $this->call('vendor:publish', ['--provider' => 'Spatie\Permission\PermissionServiceProvider']);
 
-        // Create base Auth and Migrate
+        // Migrate and Seed
         $this->call('migrate');
+        $this->call('db:seed');
     }
 }
