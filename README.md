@@ -71,7 +71,7 @@ DB_PASSWORD=
 
 Modify the following attributes in the .env file with the credentials for the project
 ```
-APP_EMAIL=client@projectdomain.com
+ADMIN_EMAIL=client@projectdomain.com
 ```
 
 ## Run MWI Install
