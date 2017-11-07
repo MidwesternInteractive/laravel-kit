@@ -65,25 +65,14 @@ $ php artisan mwi:install
 This next sections walk you through setting up various included packages.
 
 ## spatie/laravel-permission
+
+This package is set up by default with `mwi:install`
+
 [Spatie Permissions Documentation](https://github.com/spatie/laravel-permission)
 
-```shell
-$ php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="migrations"
-$ php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --tag="config"
-```
-
-### Modify Permissions Config
-Open `config/permission.php` and modify the table names to match your model.
-
-Most common will be user: `user_has_permissions` and `user_has_roles`.
-
-### Migrate
-```shell
-$ php artisan migrate
-```
 
 ### Modify the Model to use Permissions on
-Open `App\User` or whatever model it permission swill be used on and add `use HasRoles;` to the class:
+Open `App\User.php` or whatever model the permissions will be used on and add `HasRoles;` to the use statement of the class:
 ```php
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
