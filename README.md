@@ -20,7 +20,7 @@ If you haven't already, make sure you have your local environment setup.
     - [spatie/laravel-permission](#spatie-laravel-permission)
   - [JavaScript Packages](#javascript-packages)
 
-# Package Specific Setup
+# Set Up
 __*Note*__ `$` represents a terminal command and should not be typed out.
 
 All commands (unless otherwise specified) should be ran from home dir:
@@ -118,7 +118,7 @@ $ php artisan db:seed
 # Package Specific Setup
 This next sections walk you through setting up various included packages.
 
-## spatie/laravel-permission
+## Spatie Laravel Permission
 
 This package is set up by default with `mwi:install`
 
