@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
 
         $administrator = User::create([
             'name'      => 'Administrator',
-            'email'     => env('APP_EMAIL', 'support@midwesterninteractive.com'),
+            'email'     => env('ADMIN_EMAIL', 'support@midwesterninteractive.com'),
             'password'  => Hash::make('secret'),
         ])->assignRole('administrator');
         
