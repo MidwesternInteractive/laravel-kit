@@ -18,26 +18,34 @@ class UsersTableSeeder extends Seeder
         app()['cache']->forget('spatie.permission.cache');
 
         // Seed Developer Account
-        Role::create(['name' => 'developer']);
+        $role = Role::firstOrCreate(['name' => 'developer']);
 
-        $developer = User::create([
-            'name'      => 'MWI',
+        $developer = User::firstOrNew([
             'email'     => 'support@buildmidwestern.com',
-            'password'  => Hash::make('123mwi'),
-        ])->assignRole('developer');
+            'name'      => 'MWI'
+        ]);
+        $developer->password = Hash::make('123mwi');
+        $developer->remember_token = str_random(10);
+        $developer->save();
+
+        $developer->syncRoles(['developer']);
 
         // Seed Administrator Account
-        Role::create(['name' => 'administrator']);
+        $role = Role::firstOrCreate(['name' => 'administrator']);
 
-        $administrator = User::create([
-            'name'      => 'Administrator',
-            'email'     => env('ADMIN_EMAIL', 'support@midwesterninteractive.com'),
-            'password'  => Hash::make('secret'),
-        ])->assignRole('administrator');
+        $administrator = User::firstOrNew([
+            'email'     => env('APP_EMAIL', 'support@midwesterninteractive.com'),
+            'name'      => 'Administrator'
+        ]);
+        $administrator->password = Hash::make('secret');
+        $administrator->remember_token = str_random(10);
+        $administrator->save();
+
+        $administrator->syncRoles(['administrator']);
         
         // Create additional seed data if not in live environment
         if (!App::environment('production')) {
-            factory(App\User::class, 48)->create();
+            factory(User::class, 48)->create();
         }
     }
 }

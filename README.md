@@ -57,6 +57,28 @@ Modify the following attributes in the .env file with the credentials for the pr
 APP_EMAIL=client@projectdomain.com
 ```
 
+## Seeder
+In order for the seeder to run properly you need to run the next couple of steps:
+
+Open `database/seeds/DatabaseSeeder.php` and un comment the following line
+```php
+$this->call(UsersTableSeeder::class);
+```
+
+Open `App\User.php` or whatever model the permissions will be used on and add `HasRoles;` to the use statement of the class:
+```php
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
+
+class User extends Authenticatable
+{
+    use Notifiable, HasRoles;
+
+    // ...
+}
+```
+
 ## Run MWI Install
 This is will set up the basic structure for a MWI Laravel project.
 ```shell
@@ -73,22 +95,6 @@ This next sections walk you through setting up various included packages.
 This package is set up by default with `mwi:install`
 
 [Spatie Permissions Documentation](https://github.com/spatie/laravel-permission)
-
-
-### Modify the Model to use Permissions on
-Open `App\User.php` or whatever model the permissions will be used on and add `HasRoles;` to the use statement of the class:
-```php
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
-
-class User extends Authenticatable
-{
-    use Notifiable, HasRoles;
-
-    // ...
-}
-```
 
 ---
 
