@@ -1,9 +1,26 @@
+
+
 ## Local Environment
 If you haven't already, make sure you have your local environment setup.
 
 [Local Environment Setup](https://github.com/MidwesternInteractive/local-environment)
 
-# Set Up
+  - [Set Up](#set-up)
+    - [Laravel Installer](#laravel-installer)
+    - [Install Laravel Project](#install-laravel-project)
+    - [Require composer dependencies](#require-composer-dependencies)
+    - [Create MySQL DB](#create-mysql-db)
+    - [Set up laravel .env](#set-up-laravel-env)
+    - [Run MWI Install](#run-mwi-install)
+  - [Seeding](#seeding)
+    - [Dump Autoload File](#dump-autoload-file)
+    - [Edit User Model](#edit-user-model)
+    - [Seed Database](#seed-database)
+  - [Package Specific Setup](#package-specific-setup)
+    - [spatie/laravel-permission](#spatie-laravel-permission)
+  - [JavaScript Packages](#javascript-packages)
+
+# Package Specific Setup
 __*Note*__ `$` represents a terminal command and should not be typed out.
 
 All commands (unless otherwise specified) should be ran from home dir:
@@ -57,15 +74,27 @@ Modify the following attributes in the .env file with the credentials for the pr
 APP_EMAIL=client@projectdomain.com
 ```
 
-## Seeder
-In order for the seeder to run properly you need to run the next couple of steps:
+## Run MWI Install
+This is will set up the basic structure for a MWI Laravel project.
+```shell
+$ php artisan mwi:install
+```
 
+---
+
+# Seeding
 Open `database/seeds/DatabaseSeeder.php` and un comment the following line
 ```php
 $this->call(UsersTableSeeder::class);
 ```
 
-Open `App\User.php` or whatever model the permissions will be used on and add `HasRoles;` to the use statement of the class:
+## Dump Autoload File
+```shell
+$ composer dump-autoload
+```
+
+## Edit User Model
+Open `App\User.php` and add `HasRoles` to the use statement of the class
 ```php
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -79,10 +108,9 @@ class User extends Authenticatable
 }
 ```
 
-## Run MWI Install
-This is will set up the basic structure for a MWI Laravel project.
+## Seed Database
 ```shell
-$ php artisan mwi:install
+$ php artisan db:seed
 ```
 
 ---

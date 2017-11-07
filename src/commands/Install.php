@@ -46,6 +46,5 @@ class Install extends Command
 
         // Migrate and Seed
         $this->call('migrate');
-        $this->call('db:seed');
     }
 }
