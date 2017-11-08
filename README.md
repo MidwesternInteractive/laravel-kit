@@ -1,7 +1,7 @@
-
-
 ## Local Environment
 If you haven't already, make sure you have your local environment setup.
+
+---
 
 [Local Environment Setup](https://github.com/MidwesternInteractive/local-environment)
 
@@ -46,6 +46,7 @@ Use the name of the repository as the project name (replacing spaces and special
 ```shell
 $ cd project-name
 $ composer require mwi/laravel-kit
+$ composer require-dev squizlabs/php_codesniffer
 ```
 
 ## Create MySQL DB
@@ -112,6 +113,26 @@ class User extends Authenticatable
 ```shell
 $ php artisan db:seed
 ```
+
+## Composer Scripts for Refreshing/Seeding
+Open your `composer.json` file and add the following to the scripts object
+```json
+"refresh:seed": "php artisan migrate:refresh --seed"
+```
+
+---
+
+# Testing
+We utilize PHP CodeSniffer and PHPUnit for testing our source code. PHP Unit comes out of box with Laravel and we installed Code Sniffer when we set up the project.
+
+For ease of use we'll add some composer scripts to our `composer.json` file.
+```json
+"sniff": "phpcs -p ./app",
+"sniff:fix": "phpcbf -p ./app",
+"test": "phpunit",
+"sniff:test": "composer sniff && phpunit",
+```
+The first just sniffs, second fixes the sniff errors it can, third runs phpunit tests and four sniffs and tests together.
 
 ---
 
