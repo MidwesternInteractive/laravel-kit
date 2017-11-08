@@ -46,7 +46,7 @@ Use the name of the repository as the project name (replacing spaces and special
 ```shell
 $ cd project-name
 $ composer require mwi/laravel-kit
-$ composer require-dev squizlabs/php_codesniffer
+$ composer require squizlabs/php_codesniffer --dev
 ```
 
 ## Create MySQL DB
