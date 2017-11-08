@@ -16,9 +16,11 @@ If you haven't already, make sure you have your local environment setup.
     - [Dump Autoload File](#dump-autoload-file)
     - [Edit User Model](#edit-user-model)
     - [Seed Database](#seed-database)
+  - [Testing](#testing)
   - [Package Specific Setup](#package-specific-setup)
     - [spatie/laravel-permission](#spatie-laravel-permission)
   - [JavaScript Packages](#javascript-packages)
+  - [Additional References/Guides](#additional-references-guides)
 
 # Set Up
 __*Note*__ `$` represents a terminal command and should not be typed out.
@@ -169,3 +171,24 @@ $ npm install select2
 ```shell
 $ npm install masonry-layout
 ```
+
+---
+
+# Additional References/Guides
+__*Note*__ Some of these guides are still a work in progress.
+
+For more information on how to utilize various features of this kit visit the following:e
+
+  - [Laravel Style Guide](https://github.com/MidwesternInteractive/guides/tree/master/laravel)
+    - [Code Standards](https://github.com/MidwesternInteractive/guides/tree/master/laravel/standards)
+    - [Migrations](https://github.com/MidwesternInteractive/guides/tree/master/laravel/migrations)
+    - [Seeders](https://github.com/MidwesternInteractive/guides/tree/master/laravel/seeders)
+    - [Tests](https://github.com/MidwesternInteractive/guides/tree/master/laravel/tests)
+    - [Routes](https://github.com/MidwesternInteractive/guides/tree/master/laravel/routes)
+    - [Models](https://github.com/MidwesternInteractive/guides/tree/master/laravel/models)
+    - [Traits](https://github.com/MidwesternInteractive/guides/tree/master/laravel/traits)
+    - [Controllers](https://github.com/MidwesternInteractive/guides/tree/master/laravel/controllers)
+    - [Services](https://github.com/MidwesternInteractive/guides/tree/master/laravel/services)
+    - [Requests](https://github.com/MidwesternInteractive/guides/tree/master/laravel/requests)
+    - [Facades](https://github.com/MidwesternInteractive/guides/tree/master/laravel/facades)
+    - [Views](https://github.com/MidwesternInteractive/guides/tree/master/laravel/views)
