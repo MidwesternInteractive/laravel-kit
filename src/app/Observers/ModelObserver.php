@@ -12,6 +12,6 @@ class ModelObserver
      */
     public function created(Model $model)
     {
-        
+        //
     }
 }
