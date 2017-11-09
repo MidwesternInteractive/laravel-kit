@@ -177,7 +177,7 @@ $ npm install masonry-layout
 # Additional References and Guides
 __*Note*__ Some of these guides are still a work in progress.
 
-For more information on how to utilize various features of this kit visit the following:e
+For more information on how to utilize various features of this kit visit the following:
 
   - [Laravel Style Guide](https://github.com/MidwesternInteractive/guides/tree/master/laravel)
     - [Code Standards](https://github.com/MidwesternInteractive/guides/tree/master/laravel/standards)
