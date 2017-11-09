@@ -20,7 +20,7 @@ If you haven't already, make sure you have your local environment setup.
   - [Package Specific Setup](#package-specific-setup)
     - [spatie/laravel-permission](#spatie-laravel-permission)
   - [JavaScript Packages](#javascript-packages)
-  - [Additional References/Guides](#additional-references-guides)
+  - [Additional References and Guides](#additional-references-and-guides)
 
 # Set Up
 __*Note*__ `$` represents a terminal command and should not be typed out.
@@ -174,7 +174,7 @@ $ npm install masonry-layout
 
 ---
 
-# Additional References/Guides
+# Additional References and Guides
 __*Note*__ Some of these guides are still a work in progress.
 
 For more information on how to utilize various features of this kit visit the following:e
