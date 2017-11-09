@@ -24,7 +24,7 @@ class Install extends Command
      */
     public function handle()
     {
-        file_put_contents(base_path('.gitignore'), "/public/css\n/public/js\n", FILE_APPEND);
+        file_put_contents(base_path('.gitignore'), "/public\n*.DS_Store\n", FILE_APPEND);
 
         $this->runArtisanCalls();
 

@@ -20,6 +20,7 @@ If you haven't already, make sure you have your local environment setup.
   - [Package Specific Setup](#package-specific-setup)
     - [spatie/laravel-permission](#spatie-laravel-permission)
   - [JavaScript Packages](#javascript-packages)
+    - [Standard Packages](#standard-packages)
   - [Additional References and Guides](#additional-references-and-guides)
 
 # Set Up
@@ -149,7 +150,15 @@ This package is set up by default with `mwi:install`
 
 ---
 
-# JavaScript Packages
+# JavaScript/CSS Assets
+Always be sure to run the following command during a projects set up
+```shell
+$ npm install
+```
+
+We utilize larvel mix to handling the building of our assets. Visit [MIX Documention](https://laravel.com/docs/master/mix) for more infomration.
+
+## Standard Packages
 These packages are on an as need basis. If a theme was incorporated they may not be necessary.
 
 *For masking inputs*
