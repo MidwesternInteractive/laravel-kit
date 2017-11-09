@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<ruleset name="laravel">
+  <description>Coding Standards</description>
+  <config name="ignore_warnings_on_exit" value="1"/>
+  <rule ref="PSR2"/>
+  <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
+    <properties>
+      <property name="ignoreBlankLines" value="false"/>
+    </properties>
+  </rule>
+  <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.StartFile">
+    <severity>10</severity>
+  </rule>
+  <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EndFile">
+    <severity>10</severity>
+  </rule>
+  <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines">
+    <severity>10</severity>
+  </rule>
+  <rule ref="Squiz.Strings.DoubleQuoteUsage.ContainsVar">
+    <severity>0</severity>
+  </rule>
+  <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired">
+    <severity>10</severity>
+  </rule>
+</ruleset>

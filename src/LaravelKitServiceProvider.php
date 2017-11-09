@@ -40,5 +40,9 @@ class LaravelKitServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/database/' => database_path(),
         ], 'database');
+
+        $this->publishes([
+            __DIR__.'/phpcs.xml' => base_path('phpcs.xml'),
+        ], 'base');
     }
 }
