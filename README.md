@@ -156,7 +156,33 @@ Always be sure to run the following command during a projects set up
 $ npm install
 ```
 
-We utilize larvel mix to handling the building of our assets. Visit [MIX Documention](https://laravel.com/docs/master/mix) for more infomration.
+We utilize larvel mix to handle the building of assets. Visit the [MIX Documention](https://laravel.com/docs/master/mix) for more information.
+
+Structure your assets by `core`, `theme` and `application` as necessary in the `webpack.mix.js` file.
+```js
+// Core Scripts for Every Page
+mix.scripts([
+  // -- Your Core Scripts/Dependencies
+  "resources/assets/lib/jquery/jquery.min.js",
+  "resources/assets/js/main.js"
+], 'public/js/core.js')
+
+// Scripts for the Theme
+.scripts([
+  // -- Your Theme Scripts/Dependencies
+  "node_modules/select2/dist/select2.js"
+  "resources/assets/js/theme.js",
+], 'public/js/theme.js')
+
+// Application JavaScript
+.js('resources/assets/js/app.js', 'public/js/app.js')
+
+// Theme Styles
+.styles('resources/assets/css/theme.css', 'public/css/theme.css')
+
+// Application Styles
+.sass('resources/assets/sass/app.scss', 'public/css');
+```
 
 ## Standard Packages
 These packages are on an as need basis. If a theme was incorporated they may not be necessary.
