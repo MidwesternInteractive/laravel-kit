@@ -5,12 +5,12 @@ namespace App\Observers;
 /**
  * User Observer
  */
-class ModelObserver
+class UserObserver
 {
     /**
-     * Model Created
+     * User Created
      */
-    public function created(Model $model)
+    public function created(User $user)
     {
         //
     }

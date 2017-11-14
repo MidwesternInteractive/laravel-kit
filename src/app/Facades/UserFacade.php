@@ -2,7 +2,7 @@
 
 namespace App\Facades;
 
-class ModelFacade
+class UserFacade
 {
     //
 }

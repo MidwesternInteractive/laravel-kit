@@ -10,7 +10,7 @@ class UserPolicy
     use HandlesAuthorization;
 
     /**
-     * Check if the user is a Super Admin.
+     * Check if the logged in user is an Admin.
      * 
      * @return mixed
      */
@@ -28,9 +28,9 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function view(User $user, User $model)
+    public function view(User $user, User $model = null)
     {
-        //
+        return $user->can('view user', $model);
     }
 
     /**
@@ -41,7 +41,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->can('create user');
     }
 
     /**
@@ -51,9 +51,9 @@ class UserPolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function update(User $user, User $model)
+    public function update(User $user, User $model = null)
     {
-        //
+        return $user->can('update user', $model);
     }
 
     /**
@@ -65,6 +65,6 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        //
+        return $user->can('delete user', $model);
     }
 }

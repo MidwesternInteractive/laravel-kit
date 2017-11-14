@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-trait ModelTrait
+trait UserHelpers
 {
     //
 }
