@@ -2,6 +2,8 @@
 
 namespace App\Observers;
 
+use App\User;
+
 /**
  * User Observer
  */
