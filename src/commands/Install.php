@@ -16,7 +16,7 @@ class Install extends Command
      * The console command description.
      * @var string
      */
-    protected $description = 'Command to install MWI requirements.';
+    protected $description = 'One Command to Rule Them All... okay it installs MWI requirements.';
 
     /**
      * Method to run on command

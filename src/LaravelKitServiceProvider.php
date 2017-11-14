@@ -51,8 +51,13 @@ class LaravelKitServiceProvider extends ServiceProvider
         ], 'app');
 
         $this->publishes([
-            __DIR__.'/database/' => database_path(),
-        ], 'database');
+            __DIR__.'/database/seeds' => database_path('seeds'),
+        ], 'seeds');
+
+        $timestamp = date('Y_m_d_His', time());
+        $this->publishes([
+            __DIR__.'/database/migrations/add_soft_deletes_to_users_table.php.stub' => database_path('migrations') . '/' . $timestamp . '_add_soft_deletes_to_users_table.php',
+        ], 'migrations');
 
         $this->publishes([
             __DIR__.'/phpcs.xml' => base_path('phpcs.xml'),
