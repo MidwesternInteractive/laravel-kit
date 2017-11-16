@@ -16,6 +16,7 @@ class LaravelKitServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 Commands\Install::class,
+                Commands\Crud::class,
             ]);
         }
 
