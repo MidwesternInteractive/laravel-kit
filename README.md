@@ -17,6 +17,7 @@ If you haven't already, make sure you have your local environment setup.
     - [Edit User Model](#edit-user-model)
     - [Seed Database](#seed-database)
   - [Testing](#testing)
+  - [CRUD](#crud)
   - [Package Specific Setup](#package-specific-setup)
     - [spatie/laravel-permission](#spatie-laravel-permission)
   - [JavaScript Packages](#javascript-packages)
@@ -152,6 +153,16 @@ For ease of use we'll add some composer scripts to our `composer.json` file.
 "sniff:test": "composer sniff && phpunit",
 ```
 The first just sniffs, second fixes the sniff errors it can, third runs phpunit tests and four sniffs and tests together.
+
+---
+
+# CRUD
+We have put together a CRUD command. It will set up all the core files necessary to create a well put together crud. Routes and View will need to be added separately.
+
+First argument is the name of the model. This will also create a migration for the new model. If you'd prefer to not create the migration use the option `--no-migration`
+```sell
+$ php artisan mwi:crud Store
+```
 
 ---
 
