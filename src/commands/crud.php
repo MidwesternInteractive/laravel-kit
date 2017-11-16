@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Console\Commands;
+namespace MWI\LaravelKit\Commands;
 
 use Illuminate\Console\Command;
+use Spatie\Permission\Models\Permission;
 
 class Crud extends Command
 {
@@ -41,16 +42,6 @@ class Crud extends Command
     ];
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed
@@ -68,7 +59,7 @@ class Crud extends Command
 
         foreach ($this->files as $file) {
             $new_file = str_replace('{model}', $this->model, $file);
-            $data_file = file_get_contents(__DIR__.'/'.str_replace('{model}', 'Model', $file));
+            $data_file = file_get_contents(__DIR__."/../".str_replace('{model}', 'Model', $file));
 
             if (!file_exists(dirname(base_path($new_file)))) {
                 mkdir(dirname(base_path($new_file)), 0777, true);
@@ -78,6 +69,8 @@ class Crud extends Command
                 $data = str_replace(['Model', ' model'], [$this->model, ' ' . strtolower($this->model)], $data_file);
                 file_put_contents(base_path($new_file), $data);
             }
+
+            $this->comment($new_file . ' created');
         }
 
         foreach (['view', 'create', 'edit', 'delete'] as $permission) {
