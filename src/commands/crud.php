@@ -68,14 +68,14 @@ class Crud extends Command
 
         foreach ($this->files as $file) {
             $new_file = str_replace('{model}', $this->model, $file);
-            $data_file = file_get_contents(__DIR__.'/'.str_replace('{model}', 'User', $file));
+            $data_file = file_get_contents(__DIR__.'/'.str_replace('{model}', 'Model', $file));
 
             if (!file_exists(dirname(base_path($new_file)))) {
                 mkdir(dirname(base_path($new_file)), 0777, true);
             }
 
             if (!file_exists(base_path($new_file))) {
-                $data = str_replace(['User', ' user'], [$this->model, ' ' . strtolower($this->model)], $data_file);
+                $data = str_replace(['Model', ' model'], [$this->model, ' ' . strtolower($this->model)], $data_file);
                 file_put_contents(base_path($new_file), $data);
             }
         }
