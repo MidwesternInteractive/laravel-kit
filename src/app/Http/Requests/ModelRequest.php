@@ -14,19 +14,22 @@ class ModelRequest extends FormRequest
      */
     public function authorize()
     {
+        if ($this->user()->hasRole('super admin')) {
+            return true;
+        }
         switch ($this->method()) {
             case 'POST':
-                return $this->user()->can('create model');
+                return $this->user()->can('create user');
                 break;
             case 'PUT':
             case 'PATCH':
-                return $this->user()->can('update model');
+                return $this->user()->can('update user');
                 break;
             default:
-                return false;
+                return $this->user()->hasRole('super admin');
                 break;
         }
-        return Auth::user()->can('create model');
+        return false;
     }
 
     /**
