@@ -3,13 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Model;
 
-class Model extends Authenticatable
+class Model extends Model
 {
-    use Notifiable, HasRoles, SoftDeletes;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
