@@ -25,10 +25,14 @@ class LaravelKitServiceProvider extends ServiceProvider
         /**
          * Initiate Form Componenets
          */
-        Form::component('mwitext', 'components.text', ['name', 'value' => null, 'attributes' => []]);
+        Form::component('mwitext', 'components.text', ['name', 'value' => null, 'attributes' => [], 'label' => null]);
+        Form::component('mwidate', 'components.date', ['name', 'value' => null, 'attributes' => [], 'label' => null]);
         Form::component('mwipass', 'components.pass', ['name', 'attributes' => []]);
         Form::component('mwiemail', 'components.email', ['name', 'value' => null, 'attributes' => []]);
-        Form::component('mwiselect', 'components.select', ['name', 'options' => [], 'value' => null, 'attributes' => []]);
+        Form::component('mwiselect', 'components.select', ['name', 'options' => [], 'value' => null, 'attributes' => [], 'label' => null]);
+        Form::component('mwifilter', 'components.filter', ['name', 'options' => [], 'value' => null, 'attributes' => []]);
+        Form::component('mwinumber', 'components.number', ['name', 'value' => null, 'attributes' => []]);
+        Form::component('mwiradio', 'components.radio', ['legend', 'name', 'values' => [], 'default' => null, 'attributes' => []]);
     }
 
     public function register()

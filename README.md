@@ -85,6 +85,12 @@ This is will set up the basic structure for a MWI Laravel project.
 $ php artisan mwi:install
 ```
 
+## NPM Install
+Before running any additional commands or steps be sure you install node dependencies
+```shell
+$ npm install
+```
+
 ---
 
 # Seeding
