@@ -13,6 +13,8 @@ class LaravelKitServiceProvider extends ServiceProvider
     {
         $this->publish();
 
+        $this->registerHelpers();
+
         if ($this->app->runningInConsole()) {
             $this->commands([
                 Commands\Install::class,
@@ -66,5 +68,16 @@ class LaravelKitServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/resources/' => resource_path(),
         ], 'resources');
+    }
+
+    /**
+     * Register Helpers
+     */
+    public function registerHelpers()
+    {
+        if (file_exists($file = __DIR__ . '/Helpers.php'))
+        {
+            require $file;
+        }
     }
 }
