@@ -5,9 +5,9 @@ namespace MWI\LaravelKit;
 use App\Observers\UserObserver;
 use App\User;
 use Form;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
-class LaravelKitServiceProvider extends ServiceProvider
+class ServiceProvider extends LaravelServiceProvider
 {
     public function boot()
     {
