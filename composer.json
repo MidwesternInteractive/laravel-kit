@@ -34,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "MWI\\LaravelKit\\LaravelKitServiceProvider"
+                "MWI\\LaravelKit\\ServiceProvider"
             ]
         }
     }
