@@ -151,6 +151,18 @@ Open your `composer.json` file and add the following to the scripts object
 # Testing
 We utilize PHP CodeSniffer and PHPUnit for testing our source code. PHP Unit comes out of box with Laravel and we installed Code Sniffer when we set up the project.
 
+## Test Environment Setup
+Open phpunit.xml and replace the inside of the `<php>` tag to the following.
+```xml
+<env name="DB_DATABASE" value=":memory:"/>
+<env name="DB_CONNECTION" value="sqlite"/>
+<env name="APP_ENV" value="testing"/>
+<env name="CACHE_DRIVER" value="array"/>
+<env name="SESSION_DRIVER" value="array"/>
+<env name="QUEUE_DRIVER" value="sync"/>
+```
+
+## Aliases
 For ease of use we'll add some composer scripts to our `composer.json` file.
 ```json
 "sniff": "phpcs -p ./app",
@@ -159,16 +171,6 @@ For ease of use we'll add some composer scripts to our `composer.json` file.
 "sniff:test": "composer sniff && phpunit",
 ```
 The first just sniffs, second fixes the sniff errors it can, third runs phpunit tests and four sniffs and tests together.
-
----
-
-# CRUD
-We have put together a CRUD command. It will set up all the core files necessary to create a well put together crud. Routes and View will need to be added separately.
-
-First argument is the name of the model. This will also create a migration for the new model. If you'd prefer to not create the migration use the option `--no-migration`
-```sell
-$ php artisan mwi:crud Store
-```
 
 ---
 

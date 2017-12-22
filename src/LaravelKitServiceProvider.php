@@ -17,34 +17,9 @@ class LaravelKitServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                Commands\Install::class,
-                Commands\Crud::class,
+                Commands\Install::class
             ]);
         }
-
-        User::observe(UserObserver::class);
-
-        /**
-         * Initiate Form Componenets
-         */
-        Form::component('mwitext', 'components.text', ['name', 'value' => null, 'attributes' => [], 'label' => null]);
-        Form::component('mwidate', 'components.date', ['name', 'value' => null, 'attributes' => [], 'label' => null]);
-        Form::component('mwipass', 'components.pass', ['name', 'attributes' => []]);
-        Form::component('mwiemail', 'components.email', ['name', 'value' => null, 'attributes' => []]);
-        Form::component('mwiselect', 'components.select', ['name', 'options' => [], 'value' => null, 'attributes' => [], 'label' => null]);
-        Form::component('mwifilter', 'components.filter', ['name', 'options' => [], 'value' => null, 'attributes' => []]);
-        Form::component('mwinumber', 'components.number', ['name', 'value' => null, 'attributes' => []]);
-        Form::component('mwiradio', 'components.radio', ['legend', 'name', 'values' => [], 'default' => null, 'attributes' => []]);
-    }
-
-    public function register()
-    {
-        //
-    }
-
-    public function provides()
-    {
-        //
     }
 
     /**
@@ -54,20 +29,13 @@ class LaravelKitServiceProvider extends ServiceProvider
     public function publish()
     {
         $this->publishes([
-            __DIR__.'/app/' => app_path(),
-        ], 'app');
-
-        $this->publishes([
             __DIR__.'/database/' => database_path(),
         ], 'database');
 
         $this->publishes([
             __DIR__.'/phpcs.xml' => base_path('phpcs.xml'),
+            __DIR__.'/.editorconfig' => base_path('.editorconfig'),
         ], 'base');
-
-        $this->publishes([
-            __DIR__.'/resources/' => resource_path(),
-        ], 'resources');
     }
 
     /**
