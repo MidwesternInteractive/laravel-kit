@@ -3,7 +3,7 @@
     "description": "MWI Starter Kit for Laravel Projects",
     "keywords": ["starter", "laravel"],
     "license": "MIT",
-    "authros": [
+    "authors": [
         {
             "name": "Ryan Doss",
             "email": "rd@buildmidwestern.com"
