@@ -41,7 +41,7 @@ class Install extends Command
         $this->call('make:auth');
 
         // Publish Service Providers
-        $this->call('vendor:publish', ['--provider' => 'MWI\LaravelKit\LaravelKitServiceProvider']);
+        $this->call('vendor:publish', ['--provider' => 'MWI\LaravelKit\ServiceProvider']);
         $this->call('vendor:publish', ['--provider' => 'Spatie\Permission\PermissionServiceProvider']);
 
         // Migrate and Seed
