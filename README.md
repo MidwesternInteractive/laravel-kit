@@ -17,8 +17,9 @@ If you haven't already, make sure you have your local environment setup.
     - [Edit User Model](#edit-user-model)
     - [Seed Database](#seed-database)
   - [Testing](#testing)
-  - [CRUD](#crud)
   - [Package Specific Setup](#package-specific-setup)
+    - [mwi/laravel-crud](#mwi-laravel-crud)
+    - [mwi/laravel-forms](#mwi-laravel-forms)
     - [spatie/laravel-permission](#spatie-laravel-permission)
   - [JavaScript Packages](#javascript-packages)
     - [Standard Packages](#standard-packages)
@@ -29,18 +30,18 @@ __*Note*__ `$` represents a terminal command and should not be typed out.
 
 All commands (unless otherwise specified) should be ran from home dir:
 ```shell
-$ cd
+cd
 ```
 
 ## Laravel Installer
 ```shell
-$ composer global require laravel/installer
+composer global require laravel/installer
 ```
 
 ## Install Laravel Project
 ```shell
-$ cd ~/projects/
-$ laravel new project-name
+cd ~/projects/
+laravel new project-name
 ```
 __*Note*__ to change `/projects/` to your project directory if different.
 
@@ -48,20 +49,20 @@ Use the name of the repository as the project name (replacing spaces and special
 
 ## Require composer dependencies
 ```shell
-$ cd project-name
-$ composer require mwi/laravel-kit
-$ composer require squizlabs/php_codesniffer --dev
+cd project-name
+composer require mwi/laravel-kit
+composer require squizlabs/php_codesniffer --dev
 ```
 
 ## Create MySQL DB
 ```shell
-$ sh vendor/mwi/laravel-kit/database.sh
+sh vendor/mwi/laravel-kit/database.sh
 ```
 
 ## Set up laravel .env
 __*Note*__ if the .env file does not exist yet (just the .env.example exists) then run the following command first. Otherwise skip this step.
 ```shell
-$ php artisan key:generate
+php artisan key:generate
 ```
 
 Modify the following attributes in the .env file with the credentials for the project
@@ -82,13 +83,13 @@ ADMIN_EMAIL=client@projectdomain.com
 ## Run MWI Install
 This is will set up the basic structure for a MWI Laravel project.
 ```shell
-$ php artisan mwi:install
+php artisan mwi:install
 ```
 
 ## NPM Install
 Before running any additional commands or steps be sure you install node dependencies
 ```shell
-$ npm install
+npm install
 ```
 
 ---
@@ -117,7 +118,7 @@ class DatabaseSeeder extends Seeder
 
 ## Dump Autoload File
 ```shell
-$ composer dump-autoload
+composer dump-autoload
 ```
 
 ## Edit User Model
@@ -137,7 +138,7 @@ class User extends Authenticatable
 
 ## Seed Database
 ```shell
-$ php artisan db:seed
+php artisan db:seed
 ```
 
 ## Composer Scripts for Refreshing/Seeding
@@ -177,6 +178,20 @@ The first just sniffs, second fixes the sniff errors it can, third runs phpunit 
 # Package Specific Setup
 This next sections walk you through setting up various included packages.
 
+## MWI Laravel CRUD
+```shell
+composer require mwi/laravel-crud
+```
+
+[MWI Laravel CRUD Documentation](https://github.com/MidwesternInteractive/laravel-crud)
+
+## MWI Laravel Forms
+```shell
+composer require mwi/laravel-forms
+```
+
+[MWI Laravel Forms Documentation](https://github.com/MidwesternInteractive/laravel-forms)
+
 ## Spatie Laravel Permission
 
 This package is set up by default with `mwi:install`
@@ -188,7 +203,7 @@ This package is set up by default with `mwi:install`
 # JavaScript/CSS Assets
 Always be sure to run the following command during a projects set up
 ```shell
-$ npm install
+npm install
 ```
 
 We utilize larvel mix to handle the building of assets. Visit the [MIX Documention](https://laravel.com/docs/master/mix) for more information.
@@ -224,22 +239,22 @@ These packages are on an as need basis. If a theme was incorporated they may not
 
 *For masking inputs*
 ```shell
-$ npm install inputmask
+npm install inputmask
 ```
 
 *For form validation*
 ```shell
-$ npm install parsleyjs
+npm install parsleyjs
 ```
 
 *For select dropdowns/multiselects*
 ```shell
-$ npm install select2
+npm install select2
 ```
 
 *For card based layouts*
 ```shell
-$ npm install masonry-layout
+npm install masonry-layout
 ```
 
 ---

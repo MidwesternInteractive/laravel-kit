@@ -1,7 +1,7 @@
 {
     "name": "mwi/laravel-kit",
     "description": "MWI Starter Kit for Laravel Projects",
-    "version": "1.6.3",
+    "version": "1.6.4",
     "keywords": ["starter", "laravel"],
     "license": "MIT",
     "authors": [
