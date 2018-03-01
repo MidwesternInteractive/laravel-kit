@@ -9,12 +9,7 @@ class RolesAndPermissionsSeeder extends Seeder
     private $roles = [
         'super admin',
         'administrator',
-        'human resources',
-        'service manager',
-        'service tech',
-        'sales',
-        'customer service',
-        'customer',
+        'member',
     ];
 
     private $permissions = [
@@ -36,6 +31,10 @@ class RolesAndPermissionsSeeder extends Seeder
             'create user',
             'update user',
             'delete user'
+        ],
+        'member' => [
+            'view user',
+            'update user'
         ]
     ];
 
@@ -47,11 +46,11 @@ class RolesAndPermissionsSeeder extends Seeder
     public function run()
     {
         foreach ($this->roles as $role) {
-            Role::create(['name' => $role]);
+            Role::updateOrCreate(['name' => $role]);
         }
 
         foreach ($this->permissions as $permission) {
-            Permission::create(['name' => $permission]);
+            Permission::updateOrCreate(['name' => $permission]);
         }
 
         foreach ($this->rolesPermissions as $roleName => $permissions) {
@@ -59,7 +58,9 @@ class RolesAndPermissionsSeeder extends Seeder
 
             if ($permissions) {
                 foreach ($permissions as $permission) {
-                    $role->givePermissionTo($permission);
+                    if (!$role->hasPermissionTo($permission)) {
+                        $role->givePermissionTo($permission);
+                    }
                 }
             }
         }
