@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ModelRequest;
-use App\Services\ModelCrud;
-use App\Model;
+use App\Http\Requests\TheModelRequest;
+use App\Services\TheModelCrud;
+use App\TheModel;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
+use Spatie\Permission\Model\Role;
 use Yajra\DataTables\Html\Builder;
 
-class ModelsController extends Controller
+class TheModelsController extends Controller
 {
-    // We'll house our model crud service here
-    private $modelCrud;
-
-    public function __construct(ModelCrud $modelCrud)
+    public function __construct(TheModelCrud $theModelHandler)
     {
-        $this->modelCrud = $modelCrud;
+        $this->theModelHandler = $theModelHandler;
     }
 
     /**
@@ -26,9 +23,9 @@ class ModelsController extends Controller
      */
     public function index()
     {
-        $this->authorize('view', Model::class);
+        $this->authorize('view', TheModel::class);
 
-        $models = Model::all();
+        $models = TheModel::all();
 
         return view('models.index', compact('models'));
     }
@@ -40,7 +37,7 @@ class ModelsController extends Controller
      */
     public function create()
     {
-        $this->authorize('create', Model::class);
+        $this->authorize('create', TheModel::class);
 
         return view('models.create');
     }
@@ -51,11 +48,11 @@ class ModelsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ModelRequest $request)
+    public function store(TheModelRequest $request)
     {
-        $this->authorize('create', Model::class);
+        $this->authorize('create', TheModel::class);
 
-        $model = $this->modelCrud->create($request);
+        $model = $this->theModelHandler->create($request);
 
         return redirect()->route('models.show', $model);
     }
@@ -66,7 +63,7 @@ class ModelsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Model $model)
+    public function show(TheModel $model)
     {
         $this->authorize('view', $model);
 
@@ -79,7 +76,7 @@ class ModelsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Model $model)
+    public function edit(TheModel $model)
     {
         $this->authorize('update', $model);
 
@@ -93,13 +90,13 @@ class ModelsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ModelRequest $request, Model $model)
+    public function update(TheModelRequest $request, TheModel $model)
     {
         $this->authorize('update', $model);
 
-        $model = $this->modelCrud->update($request, $model);
+        $model = $this->theModelHandler->update($request, $model);
 
-        return redirect()->back()->with('success', 'Model Updated Successfully!');
+        return redirect()->back()->with('success', 'TheModel Updated Successfully!');
     }
 
     /**
@@ -108,7 +105,7 @@ class ModelsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Model $model)
+    public function destroy(TheModel $model)
     {
         $this->authorize('delete', $model);
 

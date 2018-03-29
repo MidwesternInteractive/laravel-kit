@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-trait ModelHelpers
+trait TheModelManagement
 {
     //
 }
