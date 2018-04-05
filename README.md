@@ -155,7 +155,7 @@ For ease of use we'll add some composer scripts to our `composer.json` file.
 "sniff": "phpcs -p ./app",
 "sniff:fix": "phpcbf -p ./app",
 "test": "phpunit",
-"sniff:test": "composer sniff && phpunit",
+"sniff:test": "composer sniff && phpunit"
 ```
 The first just sniffs, second fixes the sniff errors it can, third runs phpunit tests and four sniffs and tests together.
 
