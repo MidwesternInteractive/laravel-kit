@@ -9,8 +9,8 @@ If you haven't already, make sure you have your local environment setup.
     - [Laravel Installer](#laravel-installer)
     - [Install Laravel Project](#install-laravel-project)
     - [Require composer dependencies](#require-composer-dependencies)
-    - [Create MySQL DB](#create-mysql-db)
     - [Set up laravel .env](#set-up-laravel-env)
+    - [Project Set Up](#project-set-up)
     - [Run MWI Install](#run-mwi-install)
   - [Seeding](#seeding)
     - [Dump Autoload File](#dump-autoload-file)
@@ -28,7 +28,7 @@ If you haven't already, make sure you have your local environment setup.
 # Set Up
 __*Note*__ `$` represents a terminal command and should not be typed out.
 
-All commands (unless otherwise specified) should be ran from home dir:
+All commands (unless otherwise specified) should be ran from home directory:
 ```shell
 cd
 ```
@@ -45,7 +45,7 @@ laravel new project-name
 ```
 __*Note*__ to change `/projects/` to your project directory if different.
 
-Use the name of the repository as the project name (replacing spaces and special characters), keep in mind that if your using `valet park` instead of `valet link` the project name will become a directory and default your local domain to "project-name.dev".
+Use the name of the repository as the project name (replacing spaces and special characters), keep in mind that if your using `valet park` instead of `valet link` the project name will become a directory and default your local domain to "project-name.loc".
 
 ## Require composer dependencies
 ```shell
@@ -54,30 +54,16 @@ composer require mwi/laravel-kit
 composer require squizlabs/php_codesniffer --dev
 ```
 
-## Create MySQL DB
-```shell
-sh vendor/mwi/laravel-kit/database.sh
-```
-
 ## Set up laravel .env
-__*Note*__ if the .env file does not exist yet (just the .env.example exists) then run the following command first. Otherwise skip this step.
+__*Note*__ if there is not .env file in the root folder of the project yet (just the .env.example exists) then run the following command. Otherwise skip this step.
 ```shell
 php artisan key:generate
 ```
 
-Modify the following attributes in the .env file with the credentials for the project
-```
-APP_NAME="Project name"
-APP_URL=http://project-name.dev
-
-DB_DATABASE=databasename
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
-Modify the following attributes in the .env file with the credentials for the project
-```
-ADMIN_EMAIL=client@projectdomain.com
+## Project Set Up
+Run the following command and follow the instructions
+```shell
+sh vendor/mwi/laravel-kit/setup.sh
 ```
 
 ## Run MWI Install
@@ -206,7 +192,7 @@ Always be sure to run the following command during a projects set up
 npm install
 ```
 
-We utilize larvel mix to handle the building of assets. Visit the [MIX Documention](https://laravel.com/docs/master/mix) for more information.
+We utilize laravel mix to handle the building of assets. Visit the [MIX Documentation](https://laravel.com/docs/master/mix) for more information.
 
 Structure your assets by `core`, `theme` and `application` as necessary in the `webpack.mix.js` file.
 ```js

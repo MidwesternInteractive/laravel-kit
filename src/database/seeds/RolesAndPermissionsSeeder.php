@@ -53,6 +53,8 @@ class RolesAndPermissionsSeeder extends Seeder
             Permission::updateOrCreate(['name' => $permission]);
         }
 
+        DB::table('role_has_permissions')->truncate();
+
         foreach ($this->rolesPermissions as $roleName => $permissions) {
             $role = Role::findByName($roleName);
 
@@ -64,5 +66,7 @@ class RolesAndPermissionsSeeder extends Seeder
                 }
             }
         }
+
+        app()['cache']->forget('spatie.permission.cache');
     }
 }
