@@ -162,9 +162,10 @@ The first just sniffs, second fixes the sniff errors it can, third runs phpunit 
 ---
 
 # Package Specific Setup
-This next sections walk you through setting up various included packages.
+These are additional packages that will help in the development of the project.
 
 ## MWI Laravel CRUD
+Very useful CRUD creation
 ```shell
 composer require mwi/laravel-crud
 ```
@@ -172,6 +173,7 @@ composer require mwi/laravel-crud
 [MWI Laravel CRUD Documentation](https://github.com/MidwesternInteractive/laravel-crud)
 
 ## MWI Laravel Forms
+Super handy components for form create
 ```shell
 composer require mwi/laravel-forms
 ```
