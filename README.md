@@ -198,8 +198,14 @@ We utilize laravel mix to handle the building of assets. Visit the [MIX Document
 
 Structure your assets by `core`, `theme` and `application` as necessary in the `webpack.mix.js` file.
 ```js
+// Theme Styles
+mix.styles('resources/assets/css/theme.css', 'public/css/theme.css')
+
+// Application Styles
+.sass('resources/assets/sass/app.scss', 'public/css');
+
 // Core Scripts for Every Page
-mix.scripts([
+.scripts([
   // -- Your Core Scripts/Dependencies
   "resources/assets/lib/jquery/jquery.min.js",
   "resources/assets/js/main.js"
@@ -215,11 +221,7 @@ mix.scripts([
 // Application JavaScript
 .js('resources/assets/js/app.js', 'public/js/app.js')
 
-// Theme Styles
-.styles('resources/assets/css/theme.css', 'public/css/theme.css')
-
-// Application Styles
-.sass('resources/assets/sass/app.scss', 'public/css');
+.sourceMaps();
 ```
 
 ## Standard Packages
