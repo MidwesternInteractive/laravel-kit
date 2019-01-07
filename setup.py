@@ -15,8 +15,8 @@ def getEnvironmentVariable(key):
 
 # Gets environment variables
 repoName = os.path.basename(os.getcwd()).strip()
-packageName = (getEnvironmentVariable('PACKAGE_NAME'), repoName)[getEnvironmentVariable('PACKAGE_NAME') != '']
-databaseName = (getEnvironmentVariable('DATABASE_NAME'), packageName)[getEnvironmentVariable('DATABASE_NAME') != '']
+packageName = (repoName, getEnvironmentVariable('PACKAGE_NAME'))[getEnvironmentVariable('PACKAGE_NAME') != '']
+databaseName = (packageName, getEnvironmentVariable('DATABASE_NAME'))[getEnvironmentVariable('DATABASE_NAME') != '']
 
 environment_data = {
     "APP_NAME": "'" + packageName + "'",
