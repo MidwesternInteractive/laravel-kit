@@ -1,20 +1,27 @@
 import os
 
+# Abort process if there's no config file
+if (os.path.isfile('./.setup') == False):
+    print('The setup file was not found, aborting mission!')
+    exit()
+
 def getEnvironmentVariable(key):
-    environment = open('./.env.example', 'r')    
+    environment = open('./.setup', 'r')    
     for line in environment:
         if line.split('=')[0] == key:
             environment.close()
             return line.split('=')[1].strip()
     environment.close()
 
+# Gets environment variables
 repoName = os.path.basename(os.getcwd()).strip()
 packageName = (getEnvironmentVariable('PACKAGE_NAME'), repoName)[getEnvironmentVariable('PACKAGE_NAME') != '']
+databaseName = (getEnvironmentVariable('DATABASE_NAME'), packageName)[getEnvironmentVariable('DATABASE_NAME') != '']
 
 environment_data = {
     "APP_NAME": "'" + packageName + "'",
     "APP_URL": 'http://' + packageName.lower().replace(' ', '-').replace('_', '-') + '.loc',
-    "DB_DATABASE": packageName.lower().replace(' ', '-').replace('_', '-'),
+    "DB_DATABASE": databaseName.lower().replace(' ', '').replace('-', '').replace('_', ''),
     "DB_USERNAME": "root",
     "DB_PASSWORD": ""
 }
@@ -32,13 +39,10 @@ if (os.path.isfile('./.env') == False):
 
     environment = open('./.env.example', 'r')    
     for line in environment:
-        if line.strip() != "[LINES AFTER THIS ARE FOR UNPACKER ONLY]":
-            if (line.split('=')[0] in environment_data):
-                new_environment.write(line.split('=')[0] + "=" + environment_data[line.split('=')[0]] + "\n")
-            else:
-                new_environment.write(line)
+        if (line.split('=')[0] in environment_data):
+            new_environment.write(line.split('=')[0] + "=" + environment_data[line.split('=')[0]] + "\n")
         else:
-            break
+            new_environment.write(line)
 
     new_environment.close()
     environment.close()
