@@ -45,28 +45,38 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run()
     {
+        $this->clearTables();
+
         foreach ($this->roles as $role) {
             Role::updateOrCreate(['name' => $role]);
         }
 
         foreach ($this->permissions as $permission) {
-            Permission::updateOrCreate(['name' => $permission]);
+            Permission::create(['name' => $permission]);
         }
-
-        DB::table('role_has_permissions')->truncate();
 
         foreach ($this->rolesPermissions as $roleName => $permissions) {
             $role = Role::findByName($roleName);
 
             if ($permissions) {
                 foreach ($permissions as $permission) {
-                    if (!$role->hasPermissionTo($permission)) {
-                        $role->givePermissionTo($permission);
-                    }
+                    $role->givePermissionTo($permission);
                 }
             }
         }
 
         app()['cache']->forget('spatie.permission.cache');
+    }
+
+    /**
+     * Clears the current tables of their data
+     */
+    public function clearTables()
+    {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::table(config('permission.table_names.model_has_permissions'))->truncate();
+        DB::table(config('permission.table_names.role_has_permissions'))->truncate();
+        DB::table(config('permission.table_names.permissions'))->truncate();
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

@@ -13,6 +13,9 @@
         "doctrine/dbal": "^2.6",
         "spatie/laravel-permission": "^2.7"
     },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.1"
+    },
     "autoload": {
         "psr-4": { "MWI\\LaravelKit\\": "src/" }
     },

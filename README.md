@@ -29,17 +29,17 @@ If you haven't already, make sure you have your local environment setup.
 __*Note*__ `$` represents a terminal command and should not be typed out.
 
 All commands (unless otherwise specified) should be ran from home directory:
-```shell
+```sh
 cd
 ```
 
 ## Laravel Installer
-```shell
+```sh
 composer global require laravel/installer
 ```
 
 ## Install Laravel Project
-```shell
+```sh
 cd ~/projects/
 laravel new project-name
 ```
@@ -48,7 +48,7 @@ __*Note*__ to change `/projects/` to your project directory if different.
 Use the name of the repository as the project name (replacing spaces and special characters), keep in mind that if your using `valet park` instead of `valet link` the project name will become a directory and default your local domain to "project-name.loc".
 
 ## Require composer dependencies
-```shell
+```sh
 cd project-name
 composer require mwi/laravel-kit
 composer require squizlabs/php_codesniffer --dev
@@ -56,25 +56,25 @@ composer require squizlabs/php_codesniffer --dev
 
 ## Set up laravel .env
 __*Note*__ if there is not .env file in the root folder of the project yet (just the .env.example exists) then run the following command. Otherwise skip this step.
-```shell
+```sh
 php artisan key:generate
 ```
 
 ## Project Set Up
 Run the following command and follow the instructions
-```shell
+```sh
 sh vendor/mwi/laravel-kit/setup.sh
 ```
 
 ## Run MWI Install
 This is will set up the basic structure for a MWI Laravel project.
-```shell
+```sh
 php artisan mwi:install
 ```
 
 ## NPM Install
 Before running any additional commands or steps be sure you install node dependencies
-```shell
+```sh
 npm install
 ```
 
@@ -103,7 +103,7 @@ class DatabaseSeeder extends Seeder
 ```
 
 ## Dump Autoload File
-```shell
+```sh
 composer dump-autoload
 ```
 
@@ -123,7 +123,7 @@ class User extends Authenticatable
 ```
 
 ## Seed Database
-```shell
+```sh
 php artisan db:seed
 ```
 
@@ -166,7 +166,7 @@ These are additional packages that will help in the development of the project.
 
 ## MWI Laravel CRUD
 Very useful CRUD creation
-```shell
+```sh
 composer require mwi/laravel-crud
 ```
 
@@ -174,7 +174,7 @@ composer require mwi/laravel-crud
 
 ## MWI Laravel Forms
 Super handy components for form create
-```shell
+```sh
 composer require mwi/laravel-forms
 ```
 
@@ -190,14 +190,14 @@ This package is set up by default with `mwi:install`
 
 # JavaScript/CSS Assets
 Always be sure to run the following command during a projects set up
-```shell
+```sh
 npm install
 ```
 
 We utilize laravel mix to handle the building of assets. Visit the [MIX Documentation](https://laravel.com/docs/master/mix) for more information.
 
 Structure your assets by `core`, `theme` and `application` as necessary in the `webpack.mix.js` file.
-```js
+```java
 // Theme Styles
 mix.styles('resources/assets/css/theme.css', 'public/css/theme.css')
 
@@ -228,22 +228,22 @@ mix.styles('resources/assets/css/theme.css', 'public/css/theme.css')
 These packages are on an as need basis. If a theme was incorporated they may not be necessary.
 
 *For masking inputs*
-```shell
+```sh
 npm install inputmask
 ```
 
 *For form validation*
-```shell
+```sh
 npm install parsleyjs
 ```
 
 *For select dropdowns/multiselects*
-```shell
+```sh
 npm install select2
 ```
 
 *For card based layouts*
-```shell
+```sh
 npm install masonry-layout
 ```
 
