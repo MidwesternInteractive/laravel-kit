@@ -9,7 +9,7 @@ class RolesAndPermissionsSeeder extends Seeder
     private $roles = [
         'super admin',
         'administrator',
-        'member',
+        'user',
     ];
 
     private $permissions = [
@@ -32,7 +32,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'update user',
             'delete user'
         ],
-        'member' => [
+        'user' => [
             'view user',
             'update user'
         ]

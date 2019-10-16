@@ -18,22 +18,14 @@ class UsersTableSeeder extends Seeder
 
         // Create Super User
         $super = User::create([
-            'email'             => 'support@buildmidwestern.com',
+            'email'             => env('SUPER_ADMIN_EMAIL', 'super@buildmidwestern.com'),
             'name'              => 'MWI',
             'password'          => Hash::make('123mwi'),
             'remember_token'    => str_random(10)
         ])->syncRoles(['super admin']);
 
-        // Create Administrator
-        $administrator = User::create([
-            'email'             => env('ADMIN_EMAIL', 'admin@buildmidwestern.com'),
-            'name'              => 'Administrator',
-            'password'          => Hash::make('secret'),
-            'remember_token'    => str_random(10)
-        ])->syncRoles(['administrator']);
-
         // Create additional seed data if not in live environment
-        if (!App::environment('production')) {
+        if (! App::environment('production')) {
             factory(User::class, 48)->create();
         }
     }
