@@ -3,6 +3,7 @@
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UsersTableSeeder extends Seeder
 {
@@ -21,7 +22,7 @@ class UsersTableSeeder extends Seeder
             'email'             => env('SUPER_ADMIN_EMAIL', 'super@buildmidwestern.com'),
             'name'              => 'MWI',
             'password'          => Hash::make('123mwi'),
-            'remember_token'    => str_random(10)
+            'remember_token'    => Str::random(40)
         ])->syncRoles(['super admin']);
 
         // Create additional seed data if not in live environment
