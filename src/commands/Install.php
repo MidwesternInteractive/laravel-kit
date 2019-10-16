@@ -38,7 +38,10 @@ class Install extends Command
     public function runArtisanCalls()
     {
         // Create Auth Structure
-        $this->call('ui vue --auth');
+        $this->call('ui', [
+            'type' => 'vue',
+            '--auth' => true
+        ]);
 
         // Publish Service Providers
         $this->call('vendor:publish', ['--provider' => 'MWI\LaravelKit\ServiceProvider']);
