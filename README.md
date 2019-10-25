@@ -6,17 +6,8 @@ If you haven't already, make sure you have your local environment setup.
 [Local Environment Setup](https://github.com/MidwesternInteractive/local-environment)
 
   - [Set Up](#set-up)
-    - [Laravel Installer](#laravel-installer)
-    - [Install Laravel Project](#install-laravel-project)
-    - [Require composer dependencies](#require-composer-dependencies)
-    - [Set up laravel .env](#set-up-laravel-env)
-    - [Project Set Up](#project-set-up)
-    - [Run MWI Install](#run-mwi-install)
-  - [Seeding](#seeding)
-    - [Dump Autoload File](#dump-autoload-file)
-    - [Edit User Model](#edit-user-model)
-    - [Seed Database](#seed-database)
-  - [Testing](#testing)
+    - [MWI Laravel Setup](#mwi-laravel-setup)
+    - [Run the Script](#run-the-script)
   - [Package Specific Setup](#package-specific-setup)
     - [mwi/laravel-crud](#mwi-laravel-crud)
     - [mwi/laravel-forms](#mwi-laravel-forms)
@@ -26,127 +17,19 @@ If you haven't already, make sure you have your local environment setup.
   - [Additional References and Guides](#additional-references-and-guides)
 
 # Set Up
-__*Note*__ `$` represents a terminal command and should not be typed out.
+We have an NPM package that handles the entire setup process
 
-All commands (unless otherwise specified) should be ran from home directory:
-```sh
-cd
-```
-
-## Laravel Installer
-```sh
-composer global require laravel/installer
-```
-
-## Install Laravel Project
+## MWI Laravel Setup
 ```sh
 cd ~/projects/
-laravel new project-name
+mkdir project-name && cd project-name
+npm i mwi-laravel-setup
 ```
-__*Note*__ to change `/projects/` to your project directory if different.
 
-Use the name of the repository as the project name (replacing spaces and special characters), keep in mind that if your using `valet park` instead of `valet link` the project name will become a directory and default your local domain to "project-name.loc".
-
-## Require composer dependencies
+## Run the Script
+For instructions on the setup script visit [MWI Laravel Setup](https://www.npmjs.com/package/mwi-laravel-setup)
 ```sh
-cd project-name
-composer require mwi/laravel-kit
-composer require squizlabs/php_codesniffer --dev
-```
-
-## Set up laravel .env
-__*Note*__ if there is not .env file in the root folder of the project yet (just the .env.example exists) then run the following command. Otherwise skip this step.
-```sh
-php artisan key:generate
-```
-
-## Project Set Up
-Run the following command and follow the instructions
-```sh
-sh vendor/mwi/laravel-kit/setup.sh
-```
-
-## Run MWI Install
-This is will set up the basic structure for a MWI Laravel project.
-```sh
-php artisan mwi:install
-```
-
-## NPM Install
-Before running any additional commands or steps be sure you install node dependencies
-```sh
-npm install
-```
-
----
-
-# Seeding
-Open `database/seeds/DatabaseSeeder.php` and add the following
-```php
-<?php
-
-use Illuminate\Database\Seeder;
-
-class DatabaseSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-        $this->call(RolesAndPermissionsSeeder::class);
-        $this->call(UsersTableSeeder::class);
-    }
-}
-```
-
-## Dump Autoload File
-```sh
-composer dump-autoload
-```
-
-## Edit User Model
-Open `App\User.php` and add `HasRoles` to the use statement of the class
-```php
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
-
-class User extends Authenticatable
-{
-    use Notifiable, HasRoles;
-
-    // ...
-}
-```
-
-## Seed Database
-```sh
-php artisan db:seed
-```
-
-## Composer Scripts for Refreshing/Seeding
-Open your `composer.json` file and add the following to the scripts object
-```json
-"refresh:seed": "php artisan migrate:refresh --seed"
-```
-
----
-
-# Testing
-We utilize PHP CodeSniffer and PHPUnit for testing our source code. PHP Unit comes out of box with Laravel and we installed Code Sniffer when we set up the project.
-
-## Test Environment Setup
-Open phpunit.xml and replace the inside of the `<php>` tag to the following.
-```xml
-<env name="DB_DATABASE" value=":memory:"/>
-<env name="DB_CONNECTION" value="sqlite"/>
-<env name="APP_ENV" value="testing"/>
-<env name="CACHE_DRIVER" value="array"/>
-<env name="SESSION_DRIVER" value="array"/>
-<env name="QUEUE_DRIVER" value="sync"/>
+python setup.py -n -p
 ```
 
 ## Aliases
@@ -165,15 +48,12 @@ The first just sniffs, second fixes the sniff errors it can, third runs phpunit 
 These are additional packages that will help in the development of the project.
 
 ## MWI Laravel CRUD
-Very useful CRUD creation
-```sh
-composer require mwi/laravel-crud
-```
+This package is setup by default
 
 [MWI Laravel CRUD Documentation](https://github.com/MidwesternInteractive/laravel-crud)
 
 ## MWI Laravel Forms
-Super handy components for form create
+Super handy components for form creation
 ```sh
 composer require mwi/laravel-forms
 ```
@@ -181,8 +61,7 @@ composer require mwi/laravel-forms
 [MWI Laravel Forms Documentation](https://github.com/MidwesternInteractive/laravel-forms)
 
 ## Spatie Laravel Permission
-
-This package is set up by default with `mwi:install`
+This package is set up by default
 
 [Spatie Permissions Documentation](https://github.com/spatie/laravel-permission)
 
